@@ -107,6 +107,7 @@ public class StudentManagerMain {
                                                 SimpleDB.SaveCourses(courses);
                                                 SimpleDB.saveEnrolls(enrolls);
                                                 System.out.println("Saved..Bye!");
+                                                System.exit(0);
                                                 break;
                                                 case "9":
                                                     SwingUtilities.invokeLater(()-> new SimpleGuiApp(students,instructors,courses,enrolls).setVisible(true));
