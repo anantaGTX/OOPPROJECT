@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class StudentManagerMain {
     public static void main(String[] args) {
        Scanner sc = new Scanner(System.in);
@@ -13,6 +12,9 @@ public class StudentManagerMain {
         ArrayList<Course> courses = SimpleDB.loadCourses();
         ArrayList<Enrollment> enrolls = SimpleDB.loadEnrolls();
         while (true) {
+            System.out.println("********************************************************************");
+            System.out.println("* PRESS 9 TO OPEN GUI. THIS IS AN APP SUITABLE FOR BOTH GUI AND CLI *");
+            System.out.println("********************************************************************\n\n");
             System.out.println("==MENU==");
             System.out.println("1. Add Student");
             System.out.println("2. Add Instructor");
@@ -26,7 +28,7 @@ public class StudentManagerMain {
 
             String choice = sc.nextLine();
             switch (choice) {
-                case "1":
+                case "1" -> {
                     System.out.println("Enter Student ID");
                     String id = sc.nextLine();
                     System.out.println("Enter Name: ");
@@ -35,8 +37,8 @@ public class StudentManagerMain {
                     String department = sc.nextLine();
                     students.add(new Student(id, name, department));
                     System.out.println("Student added successfully");
-                    break;
-                    case "2":
+               }
+                    case "2" -> {
                         System.out.println("Enter Instructor ID : ");
                         String instructorID = sc.nextLine();
                         System.out.println("Enter Instructor Name : ");
@@ -45,8 +47,8 @@ public class StudentManagerMain {
                         String instructorDepartment = sc.nextLine();
                         instructors.add(new Instructor(instructorID, instructorName, instructorDepartment));
                         System.out.println("Instructor added successfully");
-                        break;
-                        case "3":
+               }
+                        case "3" -> {
                             System.out.println("Enter Course ID : ");
                             String courseID = sc.nextLine();
                             System.out.println("Enter Course Name : ");
@@ -57,16 +59,16 @@ public class StudentManagerMain {
                             String instructorInstructorID = sc.nextLine();
                             courses.add(new Course(courseID,courseName,courseCredits,instructorInstructorID));
                             System.out.println("Course added successfully");
-                            break;
-                            case "4":
+               }
+                            case "4" -> {
                                 System.out.println("Enter Student ID : ");
                                 String studentID = sc.nextLine();
                                 System.out.println("Enter Course ID : ");
                                 String cc = sc.nextLine();
                                 enrolls.add(new Enrollment(studentID,cc,""));
                                 System.out.println("Enrollment added successfully");
-                                break;
-                                case "5":
+               }
+                                case "5" -> {
                                     System.out.println("STUDENT ID: ");
                                     String sid = sc.nextLine();
                                     System.out.println("Enter Course ID :");
@@ -80,8 +82,8 @@ public class StudentManagerMain {
                                         }
                                     }
                                     System.out.println("Grades SET");
-                                    break;
-                                    case "6":
+               }
+                                    case "6" -> {
                                         String out = "Students\n";
                                         for(Student s : students) {
                                             out+= "  -  " + s + "\n" ;
@@ -94,29 +96,28 @@ public class StudentManagerMain {
                                         out += "\nEnrollments\n";
                                         for(Enrollment e : enrolls) out += " - " + e.getStudentID() + " -> " + e.getCourseID() + " [" + (e.getGrades()==null?"":e.getGrades()) + "]\n";
                                         System.out.println(out);
-                                        break;
-                                        case "7":
+               }
+                                        case "7" -> {
                                             System.out.println("Student ID : ");
                                             String st = sc.nextLine();
                                             double g =GPA.cgpaEqualWeight(st,enrolls);
                                             System.out.println("CGPA: " + String.format("%.2f", g));
-                                            break;
-                                            case "8":
+               }
+                                            case "8" -> {
                                                 SimpleDB.SaveStudents(students);
                                                 SimpleDB.SaveInstructors(instructors);
                                                 SimpleDB.SaveCourses(courses);
                                                 SimpleDB.saveEnrolls(enrolls);
                                                 System.out.println("Saved..Bye!");
                                                 System.exit(0);
-                                                break;
-                                                case "9":
-                                                    SwingUtilities.invokeLater(()-> new SimpleGuiApp(students,instructors,courses,enrolls).setVisible(true));
+               }
+                                                case "9" -> SwingUtilities.invokeLater(()-> new SimpleGuiApp(students,instructors,courses,enrolls).setVisible(true));
 
 
 
             }
-
+            sc.close();
         }
-
+        
     }
 }

@@ -1,6 +1,6 @@
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import javax.swing.*;
 
 class SimpleGuiApp extends JFrame {
     private final ArrayList<Student> students;
@@ -65,7 +65,7 @@ class SimpleGuiApp extends JFrame {
             msg("Instructor added");
         });
 
-        // --- Add Course ---
+        
         addCrs.addActionListener(e -> {
             String code = JOptionPane.showInputDialog(this, "Course code:");
             if (code == null) return;
