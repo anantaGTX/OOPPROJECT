@@ -12,8 +12,8 @@ public class StudentManagerMain {
         ArrayList<Course> courses = SimpleDB.loadCourses();
         ArrayList<Enrollment> enrolls = SimpleDB.loadEnrolls();
         while (true) {
-            System.out.println("********************************************************************");
-            System.out.println("* PRESS 9 TO OPEN GUI. THIS IS AN APP SUITABLE FOR BOTH GUI AND CLI *");
+            System.out.println("********************************************************************\n");
+            System.out.println(" PRESS 9 TO OPEN GUI. THIS IS AN APP SUITABLE FOR BOTH GUI AND CLI \n");
             System.out.println("********************************************************************\n\n");
             System.out.println("==MENU==");
             System.out.println("1. Add Student");
